@@ -1,0 +1,54 @@
+AT: ESP8266 modülünün kullanıma hazır olup olmadığını test eder.
+
+AT + RST : ESP8266 modülünü resetleyen komuttur bu komut modülü kullanıma hazırlar.
+
+AT + GMR: Modüle ait sürüm bilgilerini çıktı olarak verir.
+
+AT + CWMODE: Wi-Fi mod seçimini yapar. Kısaca açıklamak gerekirse 3 farklı seçeneğimiz vardır.
+1.mod STA, 2.mod AP, 3.mod STA + AP. Modları değiştirebilmek için AT+CWMODE = 1 gibi komut göndermek gerekmektedir.
+
+AT + CWMODE?: Modülün hangi modda çalıştığını çıktı olarak verir.
+
+AT + CWJAP: Modülün kablosuz ağa bağlanmasını sağlar. Bu komut AT+CWJAP = SSID,Parola şeklinde kullanılır.
+
+AT + CWLAP: Modülün bağlanabileceği ağları çıktı olarak verir.
+
+AT + CWQAP: Şayet modül bir ağa bağlı ise o ağdan ayrılır.
+
+AT + CIOBAUD: Modülün BaudRate hız değerinin değiştirir. AT+CIOBAUD=115000 şeklinde kullanılır.
+
+TCP/ IP protokolü ile ilişkili AT komutlarının hepsin CIP ön adı ile başlamaktadır.
+Ayrıntılı bir şekilde komutları öğrenmek isteyen yada ihtiyaç duyanlar için en doğru ve tek kaynak Espressif şirketinin yayınladığı veri sayfasıdır.
+Ben burada kullandıklarımı ihtiyaç duyduklarımı Türkçeleştirerek paylaşmak istedim.
+
+
+AT + CIPSTATUS: Modülün bağlantı durumunu çıktı olarak verebilir. 0 ise modül bir istemci(client) olarak çalışmaktadır, 1 ise sistem bir sunucu(server) olarak çalışmaktadır.
+
+AT + CIPMUX: Modülün tekil yada çoğul bağlantı seçimi için kullanılr. 0 değeri tekil 1 değeri çoğul için kullanılır. AT+CIPMUX=1 örnek kullanımıdır.
+
+AT + CIPSTART: Modülün TCP yada UDP protokolü ile bağlantı kurmasını sağlar. AT+CIPSTART=0,”UDP”,”iot.gokhanaryiz.ga”,80 örnek kullanım olabilir.
+SSL bağlantı için de bu komut kullanılmaktadır. AT+CIPSTART=”SSL”,”iot.gokhanaryiz.ga”8443
+
+AT + CIPSEND: Modülün veri göndermesini sağlar. TCP yada UDP protokolü ile bağlantıyı kurduktan sonra veri gönderimi için kullanılır.
+
+AT + CIPHECKSEQ: Modül ile veri gönderirken spesifik olarak bir segmentin başarılı şekilde gönderilip gönderilmediğini denetler.
+Bu komutu kullanabilmek için AT+CIPSENDBUF komutunu kullanmış olmak gerekir.
+
+AT + CIPCLOSE: Modül TCP yada UDP protokolü ile bir bağlantı kurduktan sonra bağlantıyı sonlandırmak için kullanılır. SSL bağlantısını da bu komut ile sonlandırırız.
+
+AT + CIFSR: Modülün yerel IP adresini çıktı olarak verir.
+
+AT + CIPSERVER: Modül ile TCP Server oluşturmayı yada yok etmeyi sağlar. 0 parametresi sunucuyu yok ederken, 1 paramtresi oluşturur. Port numarası varsayılan olarak 333 gelmektedir.
+
+AT + CIPMODE: Modülün aktarım modunu belirleyen komuttur. 0 parametresi normal aktarım modudur. 1 parametresi ise UART Wi-Fi geçiş modudur.
+
+AT + CIPDINFO: Modülün uzak IP Port ve IPD’sini 0 paramtresi girilirse göstermez, 1 parametresi verilirse görülebilir hale getirir.
+
+
+AT + RESTORE: Modülü fabrika ayarlarına ve varsayılna geri döndüren komuttur.
+
+
+AT + SLEEP: Modülün uyku modlarını düzenleyen komuttur. 0 uyku modunu kapatır.
+1 hafif uyku moduna alır. 2 ise modern uyku moduna alır. Bu komut sadece station modda iken kullanılır.
+
+AT + CWHOSTNAME: Modülü host olarak kullanırken ismi yapılandıran komuttur. AT+CWHOSTNAME=gokhan örnek olabilir.
